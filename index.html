@@ -32,11 +32,11 @@
 
 		<br>
 
-		Link to webpage: (TODO) <a href="https://cal-cs184-student.github.io/hw2-serial-lion-link-writeup/">https://cal-cs184-student.github.io/hw2-serial-lion-link-writeup/</a>
+		Link to webpage: <a href="https://cal-cs184-student.github.io/hw2-serial-lion-link-writeup/">https://cal-cs184-student.github.io/hw2-serial-lion-link-writeup/</a>
 
 		<br>
 		
-		Link to GitHub repository: (TODO) <a href="https://github.com/cal-cs184-student/hw2-serial-lion-link-writeup">https://github.com/cal-cs184-student/hw2-serial-lion-link-writeup</a>
+		Link to GitHub repository: <a href="https://github.com/cal-cs184-student/hw2-serial-lion-link">https://github.com/cal-cs184-student/hw2-serial-lion-link</a>
 
 		<!-- <figure>
 			<img src="assets/teapot.png" alt="Teapot" style="width:50%"/>
@@ -152,7 +152,31 @@
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 		<h3>Part 5: Edge split</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		For the edge split operation, we introduce a new vertex m and assign the old bc edge to be the new mc edge. We then introduce the new mesh elements from m to the remainding vertices, such as the new halfedges, edges, and faces. We also update all the existing mesh elements to account for the new mesh elements. There was not an eventful debugging journey, we just iterated through all the mesh elements before and after the split to make sure all elements were updated properly.
+		<div style="display: flex; flex-direction: column; align-items: center;">
+		<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			<tr>
+			<td style="text-align: center;">
+				<img src="assets/section2/part5_split1.png" width="400px"/>
+				<figcaption>1 edge split</figcaption>
+			</td>
+			<td style="text-align: center;">
+				<img src="assets/section2/part5_split1flip.png" width="400px"/>
+				<figcaption>1 edge split, 1 edge flip</figcaption>
+			</td>
+			</tr>
+			<tr>
+			<td style="text-align: center;">
+				<img src="assets/section2/part5_split2.png" width="400px"/>
+				<figcaption>Split edge after edge flip</figcaption>
+			</td>
+			<td style="text-align: center;">
+				<img src="assets/section2/part5_splitcombo.png" width="400px"/>
+				<figcaption>Combination of split and flipped edges</figcaption>
+			</td>
+			</tr>
+		</table>
+		</div>
 
 		<h3>Part 6: Loop subdivision for mesh upsampling</h3>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -160,7 +184,7 @@
 		<h2>(Optional) Section III: Potential Extra Credit - Art Competition: Model something Creative</h2>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-		<h2>Additional Notes (please remove)</h2>
+		<!-- <h2>Additional Notes (please remove)</h2>
 		<ul>
 			<li>You can also add code if you'd like as so: <code>code code code</code></li>
 			<li>If you'd like to add math equations, 
@@ -169,7 +193,7 @@
 					<li>You can write display equations like so: \[ a^2 + b^2 = c^2 \]</li>
 				</ul>
 			</li>
-		</ul>
+		</ul> -->
 		</div>
 	</body>
 </html>
