@@ -149,7 +149,29 @@
 		</div>
 
 		<h3>Part 4: Edge flip</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		To flip an edge, we first check that the edge is not a boundary edge. If so, then we leave everything unchanged. Otherwise, we store the two adjacent triangles b->c->a and c->b->d, we sotre all six interior half-edges, we store
+		both faces, and all four vertices. We reuse the existing elements instead of allocating new ones. The edge's two halfedges become the new diagonal starting at a and d. The next() pointers are then changed to two new ccw 
+		triangles a->d->c and d->a->b. dc and ab switch triangles, so they get their face() pointers updated. Finally, every vertex and face is pointed at a halfedge that is still incident to it. <br>
+		Our main debugging trick was drawing the quadrilateral before and after the flip with every element labeled and storing all the variables before any changes were made. <br>
+		Our main bug was forgetting to update the face() pointers of the halfedges dc and ab. The next() pointers were correct, but the two halfedges were still pointing to the old faces. This caused the halfedge data structure to be 
+		inconsistent and some triangles started to disappear after multiple flips.  <br>
+
+		<div style="display: flex; flex-direction: column; align-items: center;">
+		<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			<tr>
+			<td style="text-align: center;">
+				<img src="assets/section2/part4_1.png" width="400px"/>
+				<figcaption>Teapot before edge flips</figcaption>
+			</td>
+			<td style="text-align: center;">
+				<img src="assets/section2/part4_2.png" width="400px"/>
+				<figcaption>Teapot after some edge flips</figcaption>
+			</td>
+			</tr>
+		</table>
+		</div>
+	
+
 
 		<h3>Part 5: Edge split</h3>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
