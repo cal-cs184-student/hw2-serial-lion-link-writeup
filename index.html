@@ -201,10 +201,70 @@
 		</div>
 
 		<h3>Part 6: Loop subdivision for mesh upsampling</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		We implemented the loop subdivision algorithm in five passes, following the staff suggested steps outlined in the function. First, we compute the new position of each original vertex using the loop subdivision formula:
+		(1 - n * u) * original_position + u * original_neighbor_position_sum. For this, we loop through all the neighboring vertices of the original verted and sum their positions. Second, we compute the position of the new vertices by
+		using the vertices A, B, C, and D: 3/8 * (A + B) + 1/8 * (C + D). Third, we split every original edge, looping over a vector of the original edges collected beforehand to avoid modifying the vector of edges while iterating.
+		New vertices are marked new and new edges as well inside of splitEdge. Fourth, we loop over all the edges again and flip edges that connect an old vertex and a new vertex. Finally, we loop over all the vertices and copy their new positions. 
+		Originally our triangulation pattern was wrong, so we disabled the this last step to check the traingulation pattern on the cube on its own. <br>
+		When we do loop subdivision, we repalce every verted with a weighted average of its neighbors. This means that sharp edges and coners get rounded and the mesh shrinks slighly each iteration. 
+		Pre-splitting edges near a sharp feature places extra vertices close to it, so the averaging acts over a shorter distance and the feature stays sharper. <br>
 
-		<h2>(Optional) Section III: Potential Extra Credit - Art Competition: Model something Creative</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<div style="display: flex; flex-direction: column; align-items: center;">
+		<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			<tr>
+			<td style="text-align: center;">
+				<img src="assets/section2/part6_1.png" width="400px"/>
+				<figcaption>Torus, no loop subdivision</figcaption>
+			</td>
+			<td style="text-align: center;">
+				<img src="assets/section2/part6_2.png" width="400px"/>
+				<figcaption>Torus, with two loop subdivisions</figcaption>
+			</td>
+			</tr>
+			<tr>
+			<td style="text-align: center;">
+				<img src="assets/section2/part6_3.png" width="400px"/>
+				<figcaption>Torus, with four loop subdivisions</figcaption>
+			</td>
+			<td style="text-align: center;">
+				<img src="assets/section2/part6_4.png" width="400px"/>
+				<figcaption>Torus, with five loop subdivisions</figcaption>
+			</td>
+			</tr>
+		</table>
+		</div>
+
+		The cube in cube.dae triangulates each face with a single diagonal. This means that different corners end up with different number of neighbors. The loop subdivision formula depends on number of neighbors so different corners behave differently.
+		Each iteration, the asymmetry accumulates and the cube becomes more distorted. If you presplit the edges of the cube, then each corner hs the same number of neighbors, and the cube subdivides symmetrically. <br>
+		
+		<div style="display: flex; flex-direction: column; align-items: center;">
+		<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			<tr>
+			<td style="text-align: center;">
+				<img src="assets/section2/part6_5.png" width="400px"/>
+				<figcaption>Cube, no loop subdivision, no edge pre-split</figcaption>
+			</td>
+			<td style="text-align: center;">
+				<img src="assets/section2/part6_6.png" width="400px"/>
+				<figcaption>Cube, after loop subdivisions, no edge pre-split</figcaption>
+			</td>
+			</tr>
+			<tr>
+			<td style="text-align: center;">
+				<img src="assets/section2/part6_7.png" width="400px"/>
+				<figcaption>Cube, after loop subdivisions, with edge pre-split</figcaption>
+			</td>
+			<td style="text-align: center;">
+				<img src="assets/section2/part6_8.png" width="400px"/>
+				<figcaption>Cube, after loop subdivisions, with edge pre-split</figcaption>
+			</td>
+			</tr>
+		</table>
+		</div>
+
+
+		<!-- <h2>(Optional) Section III: Potential Extra Credit - Art Competition: Model something Creative</h2>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. -->
 
 		<!-- <h2>Additional Notes (please remove)</h2>
 		<ul>
