@@ -48,7 +48,12 @@
 		-->
 
 		<h2>Overview</h2>
-		Give a high-level overview of what you implemented in this homework. Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.
+		In this homework, we implemented a pipeline for geometric modeling. We started with Bezier curves and surfaces, evaluated with de Casteljau's algorithm, and then worked with triangle meshes stored in a halfedge data structure. On those meshes, we implemented area-weighted vertex normals for smooth shading, 
+		the local operations of edge flip and edge split, and finally Loop subdivision, which combines the earlier pieces to upsample and smooth a mesh.
+
+		The most interesting takeaway was how much complexity the halfedge structure hides behind simple pointer traversals. Operations like flips and splits reduce to carefully reassigning a handful of pointers, but a single missed update quietly corrupts the mesh, and removes triangles without being easily noticeable. 
+		Loop subdivision also showed how cleanly connectivity and geometry can be separated: all new positions are computed from the original mesh first, then the topology is changed, and only at the end are positions updated.
+		
 
 		<h2>Section I: Bezier Curves and Surfaces</h2>
 
