@@ -207,7 +207,7 @@
 		New vertices are marked new and new edges as well inside of splitEdge. Fourth, we loop over all the edges again and flip edges that connect an old vertex and a new vertex. Finally, we loop over all the vertices and copy their new positions. 
 		Originally our triangulation pattern was wrong, so we disabled the this last step to check the traingulation pattern on the cube on its own. <br>
 		When we do loop subdivision, we repalce every verted with a weighted average of its neighbors. This means that sharp edges and coners get rounded and the mesh shrinks slighly each iteration. 
-		Pre-splitting edges near a sharp feature places extra vertices close to it, so the averaging acts over a shorter distance and the feature stays sharper. <br>
+		Pre-splitting edges near a sharp feature places extra vertices close to it, so the averaging acts over a shorter distance and the feature stays sharper. <br><br>
 
 		<div style="display: flex; flex-direction: column; align-items: center;">
 		<table style="width: 100%; text-align: center; border-collapse: collapse;">
@@ -233,9 +233,10 @@
 			</tr>
 		</table>
 		</div>
+		<br><br>
 
 		The cube in cube.dae triangulates each face with a single diagonal. This means that different corners end up with different number of neighbors. The loop subdivision formula depends on number of neighbors so different corners behave differently.
-		Each iteration, the asymmetry accumulates and the cube becomes more distorted. If you presplit the edges of the cube, then each corner hs the same number of neighbors, and the cube subdivides symmetrically. <br>
+		Each iteration, the asymmetry accumulates and the cube becomes more distorted. If you presplit the edges of the cube, then each corner hs the same number of neighbors, and the cube subdivides symmetrically. <br> <br>
 		
 		<div style="display: flex; flex-direction: column; align-items: center;">
 		<table style="width: 100%; text-align: center; border-collapse: collapse;">
